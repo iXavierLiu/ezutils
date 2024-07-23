@@ -32,6 +32,9 @@
 *.app
 
 # Build
+*.pdb
 /out/
 /build/
 /install/
+/.vs/
+
