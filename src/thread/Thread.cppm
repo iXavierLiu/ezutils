@@ -11,8 +11,8 @@ public:
     using ptr = std::shared_ptr<Thread>;
 
 public:
-    Thread(const Task& task);
-    Thread(Task::delegation_cr func);
+    explicit Thread(const Task& task);
+    explicit Thread(Task::delegation_cr func);
 
     virtual void Wait() override;
 

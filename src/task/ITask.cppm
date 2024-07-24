@@ -9,7 +9,7 @@ export class ITask
 {
 public:
     using ptr = std::shared_ptr<ITask>;
-    using delegation_type = std::function<void(void)>;
+    using delegation_type = std::function<void()>;
     using delegation_cr = const delegation_type&;
 
     enum TASK_STATUS

@@ -11,8 +11,8 @@ public:
 
 public:
     virtual ~IThreadPool() = default;
-    virtual void Expand(size_t number = 1) = 0;
-    virtual void Shrink(size_t number = 1) = 0;
+    virtual void Expand(size_t number) = 0;
+    virtual void Shrink(size_t number) = 0;
     virtual void Stop() = 0;
     virtual void Terminate() = 0;
     virtual void Pause() = 0;

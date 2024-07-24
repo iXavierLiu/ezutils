@@ -13,7 +13,7 @@ public:
     using ptr = std::shared_ptr<Task>;
 
 public:
-    Task(delegation_cr delegation);
+    explicit Task(delegation_cr delegation);
     Task(const Task& task);
     ~Task() override = default;
 
@@ -26,6 +26,6 @@ public:
     virtual void Reset(delegation_cr delegation) override;
 
 private:
-    std::atomic<TASK_STATUS> status;
     delegation_type delegation;
+    std::atomic<TASK_STATUS> status;
 };

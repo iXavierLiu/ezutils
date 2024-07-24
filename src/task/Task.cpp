@@ -5,7 +5,7 @@ module;
 
 module task;
 
-Task::Task(Task::delegation_cr delegation) : delegation{ delegation }, status{ READY } {}
+Task::Task(delegation_cr delegation) : delegation{ delegation }, status{ READY } {}
 
 Task::Task(const Task& task) : Task(task.What()) {}
 

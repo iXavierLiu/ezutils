@@ -1,7 +1,6 @@
 module;
 
 #include <atomic>
-#include <functional>
 #include <memory>
 #include <queue>
 #include <shared_mutex>
@@ -32,12 +31,12 @@ private:
     void Job();
     Task::ptr GetNext();
 
-    bool IsStopped()
+    bool IsStopped() const
     {
         return status == Status::stopped || IsTerminated();
     };
 
-    bool IsTerminated()
+    bool IsTerminated() const
     {
         return status == Status::terminated;
     };

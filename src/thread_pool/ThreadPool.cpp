@@ -55,7 +55,7 @@ void ThreadPool::Terminate()
     {
         threads[i]->Wait();
     }
-};
+}
 
 Task::ptr ThreadPool::GetNext()
 {
