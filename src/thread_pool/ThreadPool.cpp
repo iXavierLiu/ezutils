@@ -11,7 +11,9 @@ void ThreadPool::Expand(size_t number)
 
     for (size_t i = 0; i < number; ++i)
     {
-        threads.emplace_back(std::make_shared<Thread>([this]() -> void { Job(); }));
+        threads.emplace_back(std::make_shared<Thread>([this]() -> void {
+            Job();
+        }));
     }
 }
 
@@ -61,7 +63,9 @@ Task::ptr ThreadPool::GetNext()
 {
     std::unique_lock lck(tasks_mtx);
 
-    tasks_cv.wait(lck, [this]() -> bool { return (!tasks.empty()) || IsStopped(); });
+    tasks_cv.wait(lck, [this]() -> bool {
+        return (!tasks.empty()) || IsStopped();
+    });
 
     if (IsTerminated()) return nullptr;
 

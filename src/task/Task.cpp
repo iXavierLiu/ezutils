@@ -5,9 +5,16 @@ module;
 
 module task;
 
-Task::Task(delegation_cr delegation) : delegation{ delegation }, status{ READY } {}
+Task::Task(delegation_cr delegation)
+    : delegation{ delegation }
+    , status{ READY }
+{
+}
 
-Task::Task(const Task& task) : Task(task.What()) {}
+Task::Task(const Task& task)
+    : Task(task.What())
+{
+}
 
 Task::TASK_STATUS Task::GetStatus()
 {
