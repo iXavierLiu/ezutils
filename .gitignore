@@ -31,10 +31,11 @@
 *.out
 *.app
 
-# Build
+# IDE build system
 *.pdb
 /out/
 /build/
 /install/
 /.vs/
-
+/.idea/
+/.vscode/
