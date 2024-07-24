@@ -8,7 +8,7 @@ export module task:interface;
 export class ITask
 {
 public:
-    using Ptr = std::shared_ptr<ITask>;
+    using ptr = std::shared_ptr<ITask>;
     using delegation_type = std::function<void(void)>;
     using delegation_cr = const delegation_type&;
 
@@ -17,7 +17,8 @@ public:
         UNKNOWN,
         READY,
         RUNNING,
-        FINISHED
+        FINISHED,
+        DISABLED
     };
 
 public:
@@ -25,6 +26,7 @@ public:
     [[nodiscard]] virtual TASK_STATUS GetStatus() = 0;
     [[nodiscard]] virtual TASK_STATUS Execute() = 0;
     [[nodiscard]] virtual delegation_type What() const = 0;
+    virtual void Disable() = 0;
     virtual void Reset() = 0;
     virtual void Reset(delegation_cr func) = 0;
 };

@@ -7,6 +7,8 @@ module task;
 
 Task::Task(Task::delegation_cr delegation) : delegation{ delegation }, status{ READY } {}
 
+Task::Task(const Task& task) : Task(task.What()) {}
+
 Task::TASK_STATUS Task::GetStatus()
 {
     return status;
@@ -29,6 +31,14 @@ Task::TASK_STATUS Task::Execute()
 Task::delegation_type Task::What() const
 {
     return delegation;
+}
+
+void Task::Disable()
+{
+    auto expected = READY;
+    status.compare_exchange_strong(expected, DISABLED);
+
+    status.wait(RUNNING);
 }
 
 void Task::Reset()
