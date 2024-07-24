@@ -4,11 +4,11 @@ m_define_module(thread_pool)
 target_sources(${v_project}
 	PUBLIC 
 		FILE_SET v_module_files TYPE CXX_MODULES FILES
-		"IThreadPool.cppm"
-		"ThreadPool.cppm"
+		"thread_pool_interface.cppm"
+		"thread_pool.cppm"
 
 	PRIVATE
-		"ThreadPool.cpp"
+		"thread_pool.cpp"
 )
 
 target_link_libraries(${v_project}

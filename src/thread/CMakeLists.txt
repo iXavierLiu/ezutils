@@ -4,11 +4,11 @@ m_define_module(thread)
 target_sources(${v_project}
 	PUBLIC 
 		FILE_SET v_module_files TYPE CXX_MODULES FILES
-		"IThread.cppm"
-		"Thread.cppm"
+		"thread_interface.cppm"
+		"thread.cppm"
 
 	PRIVATE
-		"Thread.cpp"
+		"thread.cpp"
 )
 
 target_link_libraries(${v_project}
