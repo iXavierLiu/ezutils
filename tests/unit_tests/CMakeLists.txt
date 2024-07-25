@@ -11,11 +11,12 @@ target_sources(${v_project}
 # link gtest
 find_package(GTest CONFIG REQUIRED)
 target_link_libraries(${v_project}
-		PRIVATE
+	PRIVATE
 		GTest::gtest_main
 )
 
 # link all modules to be tested
 target_link_libraries(${v_project}
 	PRIVATE
+		"${v_package_namespace}all"
 )
