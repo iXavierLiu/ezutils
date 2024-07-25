@@ -1,9 +1,15 @@
 cmake_minimum_required(VERSION 3.30 FATAL_ERROR)
 
-set(i_package_name "ezutils")
-option(BUILD_TESTS "Builds all of tests." OFF)
+include("cmake/build-modules.cmake")
 
-project(${i_package_name} LANGUAGES CXX)
+# root project name
+set(v_package_name "ezutils")
+# root project namespace
+set(v_package_namespace "${v_package_name}::")
+# module name
+set(v_module_name "")
+
+project(${v_package_name} LANGUAGES CXX)
 
 add_subdirectory(src)
 add_subdirectory(tests)

@@ -13,6 +13,5 @@ target_sources(${v_project}
 
 target_link_libraries(${v_project}
 	PRIVATE
-		"std"
 		"${v_package_namespace}task"
 )

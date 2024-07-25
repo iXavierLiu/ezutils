@@ -1,12 +1,16 @@
-cmake_minimum_required(VERSION 3.30 FATAL_ERROR)
+option(BUILD_ALL_TESTS "Builds all of tests." OFF)
+option(BUILD_UNIT_TESTS "Builds unit tests." OFF)
+option(BUILD_DEV_TESTS "Builds development tests." OFF)
 
-set(i_package_name "ezutils")
-option(BUILD_TESTS "Builds all of tests." OFF)
+if(BUILD_ALL_TESTS)
+	set(BUILD_UNIT_TESTS ON)
+	set(BUILD_DEV_TESTS ON)
+endif()
 
-project(${i_package_name}_test LANGUAGES CXX)
-add_executable(${PROJECT_NAME})
-target_sources(${PROJECT_NAME} PRIVATE "main.cpp")
+if(BUILD_UNIT_TESTS)
+	add_subdirectory("unit_tests")
+endif()
 
-find_package(GTest CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
-
+if(BUILD_DEV_TESTS)
+	add_subdirectory("dev_tests")
+endif()
