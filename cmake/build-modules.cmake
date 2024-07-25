@@ -1,9 +1,9 @@
+include("cmake/utils.cmake")
 
 macro(m_define_module _v_module_name)
 
 	set(v_module_name "${_v_module_name}")
-	set(v_project "${v_package_name}_${v_module_name}")
-	set(v_project_alias "${v_package_namespace}${v_module_name}")
+	m_configure_project_env(${_v_module_name})
 
 	project(${v_project} LANGUAGES CXX)
 
@@ -16,8 +16,7 @@ endmacro()
 macro(m_define_test _v_test_name)
 
 	set(v_test_name "${_v_test_name}")
-	set(v_project "${v_package_name}_${v_test_name}")
-	set(v_project_alias "${v_package_namespace}${v_test_name}")
+	m_configure_project_env(${v_test_name})
 
 	project(${v_project} LANGUAGES CXX)
 
@@ -37,4 +36,9 @@ macro(m_set_target_flags _v_target_name)
 	target_compile_features(${_v_target_name} PUBLIC
 			cxx_std_20
 	)
+endmacro()
+
+macro(m_configure_project_env _v_target_name)
+	set(v_project "${v_package_name}_${_v_target_name}")
+	set(v_project_alias "${v_package_namespace}${_v_target_name}")
 endmacro()
