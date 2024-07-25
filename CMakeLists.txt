@@ -6,8 +6,6 @@ include("cmake/build-modules.cmake")
 set(v_package_name "ezutils")
 # root project namespace
 set(v_package_namespace "${v_package_name}::")
-# module name
-set(v_module_name "")
 
 project(${v_package_name} LANGUAGES CXX)
 
