@@ -5,26 +5,27 @@ module;
 
 export module task:interface;
 
+enum class ITaskStatus
+{
+    UNKNOWN,
+    READY,
+    RUNNING,
+    FINISHED,
+    DISABLED
+};
+
 export class ITask
 {
 public:
     using ptr = std::shared_ptr<ITask>;
     using delegation_type = std::function<void()>;
     using delegation_cr = const delegation_type&;
-
-    enum TASK_STATUS
-    {
-        UNKNOWN,
-        READY,
-        RUNNING,
-        FINISHED,
-        DISABLED
-    };
+    using status_type = ITaskStatus;
 
 public:
     virtual ~ITask() = default;
-    [[nodiscard]] virtual TASK_STATUS GetStatus() = 0;
-    [[nodiscard]] virtual TASK_STATUS Execute() = 0;
+    [[nodiscard]] virtual status_type GetStatus() = 0;
+    [[nodiscard]] virtual status_type Execute() = 0;
     [[nodiscard]] virtual delegation_type What() const = 0;
     virtual void Disable() = 0;
     virtual void Reset() = 0;

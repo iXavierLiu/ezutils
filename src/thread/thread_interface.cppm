@@ -2,7 +2,7 @@ module;
 #include <memory>
 export module thread:interface;
 
-enum THREAD_STATUS
+enum class IThreadStatus
 {
     UNKNOWN,
     READY,
@@ -14,7 +14,7 @@ export class IThread
 {
 public:
     using ptr = std::shared_ptr<IThread>;
-    using enum THREAD_STATUS;
+    using status_type = IThreadStatus;
 
 public:
     virtual ~IThread() = default;

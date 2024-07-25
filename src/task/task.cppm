@@ -18,8 +18,8 @@ public:
     ~Task() override = default;
 
     // 通过 ITask 继承
-    virtual TASK_STATUS GetStatus() override;
-    virtual TASK_STATUS Execute() override;
+    virtual status_type GetStatus() override;
+    virtual status_type Execute() override;
     virtual delegation_type What() const override;
     virtual void Disable() override;
     virtual void Reset() override;
@@ -27,5 +27,5 @@ public:
 
 private:
     delegation_type delegation;
-    std::atomic<TASK_STATUS> status;
+    std::atomic<status_type> status;
 };

@@ -19,5 +19,5 @@ public:
 private:
     Task task;
     std::shared_ptr<std::thread> thread;
-    std::atomic<THREAD_STATUS> status;
+    std::atomic<status_type> status;
 };
